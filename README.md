@@ -11,8 +11,9 @@ Generic-ish: Implementations use void* or defined typedefs to handle various dat
 
 Tested: Includes a test suite to ensure stability and edge-case handling.
 ## Category,Structures
-Linear,"Linked List (Singly/Doubly), Stack, Queue, Circular Buffer"
-Trees,"Binary Search Tree (BST), AVL Tree, Binary Heap"
+Linked List (Singly/Doubly/Circular/Doubly Circular)
+Stack Queue, Circular Buffer,Trees
+Binary Search Tree (BST), AVL Tree, Binary Heap
 Hashing,Hash Map (Chaining & Open Addressing)
 Graphs,"Adjacency List, Adjacency Matrix"
 ## Node Structure in Singly Link List
