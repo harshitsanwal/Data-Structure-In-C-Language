@@ -56,7 +56,7 @@ struct Node*insert_at_beg(Struct Node * start)
    start=New;
    }
   traverse(start);
-  reurn start;
+  return start;
   }
 ```
 ## Insert At End In Singly List
@@ -134,10 +134,3 @@ traverse(start);
 return start;
 }
 ```
-
-
-
-
-  
-
-
