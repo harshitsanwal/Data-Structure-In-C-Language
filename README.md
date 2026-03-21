@@ -41,10 +41,16 @@ void traverse(struct Node* start)
 ## Insert At Beginning In Singly List
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/fad28f36-8d90-4ec0-806c-0d6ce10a76eb" />
 ## The three scenarios are:
+
+
 1.Empty List: How the very first node is added, where the head pointer moves from NULL to the new node.
+
 2.Single Value List: A list WIth Only One Node.
+
 2.Existing List: The typical flow where you create a new node, point its next pointer to the current head, and then update head to the new node.
+
 ## Code
+
 ```c
 struct Node*insert_at_beg(Struct Node * start)
 {
