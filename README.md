@@ -143,7 +143,7 @@ return start;
 
 Inserting a node at any given location (position p) in a Singly Linked List generally falls into three cases. These cases are defined by where the new node is being placed relative to the rest of the list.
 
-### Insertion at the Beginning (Position 1)
+### 1.Insertion at the Beginning (Position 1)
 
 If the specified position is the first node ($p = 1$), the process is straightforward as no traversal is required.
 
@@ -153,7 +153,7 @@ Update: Update the head pointer to point to this new node.
 
 Time Complexity: $O(1)$.
 
-### Insertion at a Middle Position
+### 2.Insertion at a Middle Position
 
 This occurs when the position $p$ is greater than 1 but less than the total length of the list plus one. You must "break" an existing link to squeeze the new node in.
 
@@ -165,7 +165,7 @@ Update the next of the $(p-1)^{th}$ node to point to the new node.
 
 Time Complexity: $O(n)$ in the worst case, as you may need to traverse nearly the entire list.
 
- ### Insertion at the End (Last Position)
+ ### 3.Insertion at the End (Last Position)
  
  This happens when the position $p$ is equal to $Length + 1$. It is effectively the same as insertAtTail.
  
