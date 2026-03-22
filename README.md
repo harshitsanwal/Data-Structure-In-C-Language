@@ -85,7 +85,7 @@ In a Singly Linked List, inserting a node at the end (often called insertAtTail)
 
 ## The three scenarios are:
 
-### The List is Empty:
+### 1.The List is Empty:
 
 When the list is empty, the head pointer is NULL. In this case, the new node becomes the first and only node in the list.
 
@@ -95,7 +95,7 @@ Update: Set both the head (and tail, if you maintain one) to point to this new n
 
 Next Pointer: The next pointer of the new node is set to NULL.
 
-### The List has One or More Nodes (No Tail Pointer):
+### 2.The List has One or More Nodes (No Tail Pointer):
 
 If you only maintain a head pointer, you must traverse the entire list to find the current last node before you can attach the new one.
 
@@ -105,7 +105,7 @@ Linkage: Once at the last node, update temp->next to point to the address of the
 
 Termination: Ensure the new node’s next pointer is NULL.
 
-### The List has a Tail Pointer:
+### 3.The List has a Tail Pointer:
 
 Maintaining a tail pointer optimizes this operation from $O(n)$ to $O(1)$ because you don't have to traverse the list.
 
@@ -138,6 +138,45 @@ traverse(start);
 return start;
 ```
 ## Insert At Any Location in Singly List
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8c5f6dbc-0702-4356-affb-40b552bf9c51" />
+
+Inserting a node at any given location (position p) in a Singly Linked List generally falls into three cases. These cases are defined by where the new node is being placed relative to the rest of the list.
+
+### Insertion at the Beginning (Position 1)
+
+If the specified position is the first node ($p = 1$), the process is straightforward as no traversal is required.
+
+Process: Create the new node and set its next pointer to the current head.
+
+Update: Update the head pointer to point to this new node.
+
+Time Complexity: $O(1)$.
+
+### Insertion at a Middle Position
+
+This occurs when the position $p$ is greater than 1 but less than the total length of the list plus one. You must "break" an existing link to squeeze the new node in.
+
+Traversal:Traverse the list using a temporary pointer to reach the $(p-1)^{th}$ node
+
+Linkage: 1. Set the next of the new node to point to the $(p)^{th}$ node (the current temp->next).
+
+Update the next of the $(p-1)^{th}$ node to point to the new node.
+
+Time Complexity: $O(n)$ in the worst case, as you may need to traverse nearly the entire list.
+
+ ### Insertion at the End (Last Position)
+ 
+ This happens when the position $p$ is equal to $Length + 1$. It is effectively the same as insertAtTail.
+ 
+ Process: Traverse until the pointer reaches the node where next == NULL.
+ 
+ Linkage: Set the current last node's next pointer to the new node.
+ 
+ Termination: Ensure the new node’s next is set to NULL.
+ 
+ Time Complexity: $O(n)$ (unless a tail pointer is maintained, which makes it $O(1)$).
+
 ```c
 struct Node* inser_at_anyloc(struct Node* start)
 {
