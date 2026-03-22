@@ -78,6 +78,21 @@ struct Node*insert_at_beg(Struct Node * start)
   }
 ```
 ## Insert At End In Singly List
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/742b4a97-27a8-438d-b48e-fc8a657e0b47" />
+
+In a Singly Linked List, inserting a node at the end (often called insertAtTail) involves three primary scenarios depending on the current state of the list.
+
+### The List is Empty
+
+When the list is empty, the head pointer is NULL. In this case, the new node becomes the first and only node in the list.
+
+Action: Create a new node.
+
+Update: Set both the head (and tail, if you maintain one) to point to this new node.
+
+Next Pointer: The next pointer of the new node is set to NULL.
+
+
 ```c
 struct Node* insert_at_end(struct Node* start)
 {
