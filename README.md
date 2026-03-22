@@ -82,7 +82,10 @@ struct Node*insert_at_beg(Struct Node * start)
 
 In a Singly Linked List, inserting a node at the end (often called insertAtTail) involves three primary scenarios depending on the current state of the list.
 
-### The List is Empty
+
+## The three scenarios are:
+
+### The List is Empty:
 
 When the list is empty, the head pointer is NULL. In this case, the new node becomes the first and only node in the list.
 
@@ -92,6 +95,25 @@ Update: Set both the head (and tail, if you maintain one) to point to this new n
 
 Next Pointer: The next pointer of the new node is set to NULL.
 
+### The List has One or More Nodes (No Tail Pointer):
+
+If you only maintain a head pointer, you must traverse the entire list to find the current last node before you can attach the new one.
+
+Traversal: Use a temporary pointer (e.g., temp) starting at head. Move through the list until temp->next == NULL.
+
+Linkage: Once at the last node, update temp->next to point to the address of the new node.
+
+Termination: Ensure the new node’s next pointer is NULL.
+
+### The List has a Tail Pointer:
+
+Maintaining a tail pointer optimizes this operation from $O(n)$ to $O(1)$ because you don't have to traverse the list.
+
+Direct Access: Access the last node directly via the tail pointer.
+
+Linkage: Set tail->next to the new node.
+
+Update: Move the tail pointer so it now points to the new node (the new end of the list).
 
 ```c
 struct Node* insert_at_end(struct Node* start)
