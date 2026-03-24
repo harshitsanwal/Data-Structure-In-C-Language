@@ -213,6 +213,46 @@ return start:
 }
 ```
 ## Delete At Beginning
+
+Deleting a node from the beginning of a Singly Linked List is generally the simplest deletion operation. However, there are three specific scenarios to consider based on the state of the list.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/2fbbd8f9-2b2e-40b8-bfd2-ddb0dcf37fa4" />
+
+### 1.The List is Empty
+
+If the list contains no nodes, there is nothing to delete. In programming, this is often checked by verifying if head == NULL.
+
+Action: Display an error message (e.g., "List Underflow").
+
+Result: The list remains unchanged.
+
+Complexity: $O(1)$.
+
+### 2. The List has Only One Node
+
+In this case, the head pointer is pointing to a node whose next pointer is NULL.
+
+Process: Store the current head in a temporary pointer.
+
+Update: Set head = NULL. If you maintain a tail pointer, set tail = NULL as well.
+
+Cleanup: Free/delete the memory occupied by the temporary pointer to prevent memory leaks.
+
+Complexity: $O(1)$.
+
+### 3.The List has Multiple Nodes
+
+This is the standard case where the list has at least two nodes. You must move the head to the second node before removing the first.
+
+Process: Create a temporary pointer temp and point it to the current head.
+
+Update: Move the head pointer to the next node: head = head->next.
+
+Cleanup: Delete the node pointed to by temp.
+
+Complexity: $O(1)$ (No traversal is required).
+
+
 ```c
 struct Node* delete_at_beg(struct Node* start)
 {
