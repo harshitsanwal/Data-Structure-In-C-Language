@@ -332,5 +332,7 @@ temp=temp->next;
 printf("\n[%d] value is getting deleted",temp->info);
 free(temp);
      }
+traverse(start);
+return start;
 }
 ```
