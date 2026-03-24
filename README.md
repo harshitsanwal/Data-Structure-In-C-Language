@@ -329,8 +329,8 @@ else{
 struct Node* temp=start;
 if(temp!=NULL)
 temp=temp->next;
-printf("\n[%d] value is getting deleted");
+printf("\n[%d] value is getting deleted",temp->info);
 free(temp);
-}
+     }
 }
 ```
