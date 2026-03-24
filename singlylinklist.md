@@ -12,7 +12,7 @@ struct node* insert_at_end(struct node*);
 struct node* insert_at_anyloc(struct node*);
 struct node* delete_at_beg(struct node*);
 struct node* delete_at_end(struct node*);
-//struct node* delete_at_anyloc(struct node*);
+struct node* delete_at_anyloc(struct node*);
 void traverse(struct node*);
 int main()
 {
@@ -24,7 +24,7 @@ int main()
 		printf("Press 3 to add a new value at any location\n");
 		printf("Press 4 to delete value at beggining\n");
 		printf("Press 5 to delete value end\n");
-		//printf("Press 6 to delete value at any location\n");
+		printf("Press 6 to delete value at any location\n");
 		printf("Press 7 to print the list\n");
 		printf("Enter yout choice:");
 		scanf("%d",&n);
@@ -45,9 +45,9 @@ int main()
 			case 5:
 				start=delete_at_end(start);
 				break;
-			//case 6:
-				//start=delete_at_anyloc(start);
-				//break;
+			case 6:
+				start=delete_at_anyloc(start);
+				break;
 			default:
 				printf("\nInvalid value entered");
 		}
@@ -174,7 +174,7 @@ struct node* delete_at_end(struct node* start)
 	traverse(start);
 	return start;	
 }
-/*struct node* delete_at_anyloc(struct node*start)
+struct node* delete_at_anyloc(struct node*start)
 {
 	int n;
 	printf("\nEnter the value you want to delete:");
@@ -198,6 +198,6 @@ struct node* delete_at_end(struct node* start)
 		free(ptr);	
 		}
 	traverse(start);
-	return start;*/
+	return start;
 }
 ```
