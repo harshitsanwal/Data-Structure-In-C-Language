@@ -336,3 +336,76 @@ traverse(start);
 return start;
 }
 ```
+
+## Delete At Any Location
+
+Deleting a node from any location (position $p$) in a Singly Linked List generally involves three scenarios. These cases depend on whether the position is at the start, the end, or somewhere in between.
+
+### 1.Deleting the First Node ($p = 1$)
+
+If the user wants to delete the node at the very beginning, the process is fast because you don't need to traverse the list.
+
+Process: Point a temporary pointer to the current head.
+
+Update: Move the head to the second node ($head = head \to next$).
+
+Cleanup: Delete the temporary pointer to free memory.
+
+Complexity: $O(1)$.
+
+### 2.Deleting a Middle Node ($1 < p < End$)
+
+To delete a node in the middle, you must reach the node just before the one you want to delete. This is necessary because you need to link the $(p-1)^{th}$ node to the $(p+1)^{th}$ node.
+
+Traversal: Use a pointer (e.g., temp) to travel to the $(p-1)^{th}$ position.
+
+Linkage: 
+Create another pointer (e.g., target) to hold the $p^{th}$ node ($target = temp \to next$).
+
+Link the $(p-1)^{th}$ node to the node after the target ($temp \to next = target \to next$).
+ 
+Cleanup: Delete the target node.
+
+Complexity: $O(n)$ (since you must traverse to find the position).
+
+ ### 3.Deleting the Last Node ($p = End$)
+
+ <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4a189ae0-9942-4807-9774-42d2fe5da06a" />
+
+ If the position specified is the last element of the list, it follows the logic of "Delete at End."
+ 
+ Process: Traverse until you reach the second-to-last node.
+ 
+ Update: Set the next pointer of this second-to-last node to NULL.
+ 
+ Cleanup: Delete the original last node.
+ 
+ Complexity: $O(n)$ (requires full traversal to find the end).
+
+ ```c
+struct node* delete_at_anyloc(struct node*start)
+{
+	int n;
+	printf("\nEnter the value you want to delete:");
+	scanf("%d",&n);
+	struct node*ptr=start,*prev;
+	while(ptr!=NULL);
+	{
+	  if(ptr->info==n)
+	    break; 
+		else{
+		prev=ptr;
+		ptr=ptr->next;
+		}
+	}
+		if(ptr==NULL)
+		 printf("\n Enter value is not present in the list");
+		else
+		{
+		prev->next=ptr->next;
+		printf("\nValue deleted is [%d]",ptr->info);
+		free(ptr);	
+		}
+	traverse(start);
+	return start;
+```
