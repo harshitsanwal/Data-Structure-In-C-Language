@@ -268,3 +268,69 @@ traverse(start);
 return start;
 }
 ```
+## Delete at End
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/24bac866-9d69-4a20-be8c-83a28fe6f988" />
+
+In a Singly Linked List, deleting the last node is slightly more complex than deleting the first because you must find the second-to-last node to update its next pointer to NULL.
+
+Here are the three cases for deleting at the end:
+
+### 1.The List is Empty (Underflow)
+
+If the list has no nodes (head == NULL), there is nothing to remove.
+
+Condition: head == NULL.
+
+Action: Print an "Underflow" or "List is empty" message.
+
+Result: No change to the list structure.
+
+### 2.The List has Only One Node
+
+If the list contains only one node, the head is the only element, and deleting it results in an empty list.
+
+Condition: head->next == NULL.
+
+Action:
+1.  Save the head in a temporary pointer.
+2.  Set head = NULL.
+3.  Free the memory of the saved node.
+
+Result: The list becomes empty.
+
+### 3. The List has Multiple Nodes
+
+This is the standard case where you must traverse the list to find the node just before the last one (the penultimate node).
+
+Condition: head != NULL and head->next != NULL.
+
+Process:
+
+Use a temporary pointer (e.g., temp) to traverse the list until temp->next->next == NULL.
+
+This stops temp at the second-to-last node.
+
+Save the last node (which is temp->next) to free it later.
+
+Set temp->next = NULL to break the link to the last node.
+
+Free the memory of the deleted node.
+
+### Complexity:
+
+$O(n)$ because you must visit every node to reach the end.
+```c
+struct Node* delete_at_end(struct Node* start)
+{
+if(start==NULL)
+printf("\nList is Empty");
+else{
+struct Node* temp=start;
+if(temp!=NULL)
+temp=temp->next;
+printf("\n[%d] value is getting deleted");
+free(temp);
+}
+}
+```
