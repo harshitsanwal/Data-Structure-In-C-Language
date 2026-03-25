@@ -409,3 +409,52 @@ struct node* delete_at_anyloc(struct node*start)
 	traverse(start);
 	return start;
 ```
+# Doubly Linklist
+
+A Doubly Linked List (DLL) is a complex type of linked list in which each node contains a pointer to the previous node as well as the next node in the sequence.
+
+Unlike a singly linked list, which only allows you to move forward, a doubly linked list allows for bidirectional traversal.
+
+## Node Structure Of Doubly Link list
+```c
+struct Node*{
+  int info;
+  struct Node* prev;
+  struct Node* next;
+   };
+```
+## Forward Traverse Function in Doubly Link List
+```c
+void forward_traverse(struct Node* start)
+{
+if(start==NULL)
+printf("\nList Is empty");
+else{
+ struct Node* ptr=start;
+while(ptr!=0)
+{
+printf("<-[%d]->",ptr->info);
+ptr=ptr->next;
+}
+printf("X");
+   }
+}
+```
+## Backward Traverse Function in Doubly Link List
+```c
+void backward_tarverse(struct Node* start)
+{
+if(start==NULL)
+printf("\nlist is Empty");
+else{
+struct Node*ptr=start;
+while(ptr!=NULL)
+ptr=ptr->next;
+while(ptr!=start)
+{
+printf("<-[%d]->",ptr->info);
+ptr=ptr->prev;
+  }
+ }
+printf("X");
+}
