@@ -339,6 +339,8 @@ return start;
 
 ## Delete At Any Location
 
+ <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4a189ae0-9942-4807-9774-42d2fe5da06a" />
+
 Deleting a node from any location (position $p$) in a Singly Linked List generally involves three scenarios. These cases depend on whether the position is at the start, the end, or somewhere in between.
 
 ### 1.Deleting the First Node ($p = 1$)
@@ -369,8 +371,6 @@ Cleanup: Delete the target node.
 Complexity: $O(n)$ (since you must traverse to find the position).
 
  ### 3.Deleting the Last Node ($p = End$)
-
- <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4a189ae0-9942-4807-9774-42d2fe5da06a" />
 
  If the position specified is the last element of the list, it follows the logic of "Delete at End."
  
