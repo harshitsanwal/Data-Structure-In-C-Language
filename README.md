@@ -458,3 +458,5 @@ ptr=ptr->prev;
  }
 printf("X");
 }
+```
+# Insertion in the beggining in Doubly Linked List 
