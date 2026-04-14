@@ -460,3 +460,14 @@ printf("X");
 }
 ```
 # Insertion in the beggining in Doubly Linked List 
+In doubly Linked List there are three primary ways to insert a node
+
+## 1. Insertion at the Beginning (Front)
+
+The new node becomes the new Head of the list.
+
+The next of the new node points to the current head.
+
+The prev of the current head points to the new node.
+
+The prev of the new node is set to NULL.
