@@ -509,3 +509,38 @@ struct Node *insert_at_beg(struct Node *start)
 	return start;
 }
 ```
+# 2. Insertion at the End (Tail)
+
+The new node is added after the last node.
+
+The next of the current last node points to the new node.
+
+The prev of the new node points to the current last node.
+
+The next of the new node is set to NULL.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/fce4c1c9-7a73-44c3-bcd4-d3001aa6de70" />
+
+## Code
+```c
+struct Node *insert_at_end(struct Node *start)
+{
+	struct Node *New;
+	New=create();
+	printf("\nEnter the data in New Node");
+	scanf("%d",&New->info);
+	if(start==NULL)
+	start=New;
+	else
+	{
+		struct Node *temp;
+		temp=start;
+		while(temp->next!=NULL)
+		temp=temp->next;
+		temp->next=New;
+		New->prev=temp;
+	}
+	printList(start);
+	return start;
+}
+```
