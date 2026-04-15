@@ -459,7 +459,22 @@ ptr=ptr->prev;
 printf("X");
 }
 ```
+
+# Creating a Node 
+## Code
+```c
+struct node*create()
+{
+struct Node* New;
+New=(struct Node*)malloc(sizeof(struct Node));
+New->next=NULL;
+New->prev=NULL;
+return New;
+}
+```
+
 # Insertion in the beggining in Doubly Linked List 
+
 In doubly Linked List there are three primary ways to insert a node
 
 ## 1. Insertion at the Beginning (Front)
