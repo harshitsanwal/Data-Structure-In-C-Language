@@ -486,6 +486,9 @@ The next of the new node points to the current head.
 The prev of the current head points to the new node.
 
 The prev of the new node is set to NULL.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/72feb381-55e1-43ec-94c3-06c5b1d66ab3" />
+
 ```c
 struct Node *insert_at_beg(struct Node *start)
 {
