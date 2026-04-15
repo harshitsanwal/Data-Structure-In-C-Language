@@ -461,7 +461,7 @@ printf("X");
 ```
 
 # Creating a Node 
-## Code
+
 ```c
 struct node*create()
 {
@@ -488,8 +488,6 @@ The prev of the current head points to the new node.
 The prev of the new node is set to NULL.
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/72feb381-55e1-43ec-94c3-06c5b1d66ab3" />
-
-## Code
 
 ```c
 struct Node *insert_at_beg(struct Node *start)
@@ -521,7 +519,7 @@ The next of the new node is set to NULL.
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/fce4c1c9-7a73-44c3-bcd4-d3001aa6de70" />
 
-## Code
+
 ```c
 struct Node *insert_at_end(struct Node *start)
 {
@@ -540,7 +538,177 @@ struct Node *insert_at_end(struct Node *start)
 		temp->next=New;
 		New->prev=temp;
 	}
-	printList(start);
+	return start;
+}
+```
+
+## 3. Insertion at a Specific Position (Middle)
+
+The new node is placed between two existing nodes (let's call them Node A and Node B).
+
+New Node's next points to Node B.
+
+New Node's prev points to Node A.
+
+Node A's next is updated to point to the New Node.
+
+Node B's prev is updated to point to the New Node.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/25fe2e80-441c-4d0b-aa49-cfebc11a3fd8" />
+
+```c
+struct Node *insert_at_loc(struct Node *start)
+{
+	int item;
+	printf("\nEnter the node data after which New node can be inserted");
+	scanf("%d",&item);
+	struct Node *temp;
+	temp=start;
+	while(temp!=NULL)
+	{
+		if(item==temp->info)
+		break;
+		else
+		temp=temp->next;
+	}
+	if(temp==NULL)
+	printf("\nNode Not Found");
+	else
+	{
+		struct Node *New;
+		New=create();
+		printf("\nEnter the data in New Node");
+		scanf("%d",&New->info);
+		if(temp->next==NULL)
+		{
+			temp->next=New;
+			New->prev=New;	
+		}
+		else
+		{
+			New->next=temp->next;
+			temp->next->prev=New;
+			temp->next=New;
+			New->prev=temp;
+		}
+	}
+	return start;
+}
+```
+
+# Deletion in Doubly Linked List
+
+In doubly Linked List there are three primary ways to delete a node
+
+## 1. Deleting the First Node (Head)
+
+To remove the first element:
+
+Move the Head pointer to the second node.
+
+Set the new Head’s prev pointer to NULL.
+
+Free the memory of the old Head.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/079622df-034a-4a6a-a88e-bcf460a5ecf8" />
+
+```c
+struct Node *Delete_First(struct Node *start)
+{
+	if(start==NULL)
+	printf("\nList is Empty");
+	else
+	{
+		struct Node *temp;
+		temp=start;
+		start=start->next;
+		if(start!=NULL)
+		start->prev=NULL;
+		printf("\n%d is deleted from List",temp->info);
+		free(temp);
+	}
+	return start;
+}
+```
+## 2. Deleting the Last Node (Tail)
+
+To remove the final element:
+
+Traverse to the last node (or use a Tail pointer).
+
+Set the next pointer of the second-to-last node to NULL.
+
+Free the memory of the old Tail.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/117accbe-8c04-4cdb-86f3-72d7dfb8f6f2" />
+
+```c
+struct Node *Delete_Last(struct Node *start)
+{
+	if(start==NULL)
+	printf("\nList is Empty");
+	else
+	{
+		struct Node *temp;
+		temp=start;
+		while(temp->next!=NULL)
+		temp=temp->next;
+		if(temp==start)
+		start=NULL;
+		else
+		temp->prev->next=NULL;
+		printf("\n%d is deleted from List",temp->info);
+		free(temp);
+	}
+	return start;
+}
+```
+## Deletion at Anylocation
+
+Deleting a Node in the Middle
+
+If you are deleting a node (let's call it temp):
+
+Update the next pointer of the node before temp to point to the node after temp.
+
+Update the prev pointer of the node after temp to point to the node before temp.
+
+Free the memory of temp.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d86decf8-d508-444c-8760-a16296a32d0c" />
+
+
+```c
+struct Node *Delete_by_location(struct Node *start)
+{
+	int item;
+	printf("\nEnter the node value to be deleted");
+	scanf("%d",&item);
+	struct Node *temp;
+	temp=start;
+	while(temp!=NULL)
+	{
+		if(item==temp->info)
+		break;
+		else
+		temp=temp->next;
+	}
+	if(temp==NULL)
+	printf("\nNode not found & Deletion Failed");
+	else
+	{
+		if(start==temp)
+		start=Delete_First(start);
+		else if(temp->next==NULL)
+		start=Delete_Last(start);
+		else
+		{
+			temp->prev->next=temp->next;
+			temp->next->prev=temp->prev;
+			printf("%d is deleted from List",temp->info);
+			free(temp);
+		}
+	}
 	return start;
 }
 ```
