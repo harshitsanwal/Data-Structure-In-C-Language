@@ -471,3 +471,21 @@ The next of the new node points to the current head.
 The prev of the current head points to the new node.
 
 The prev of the new node is set to NULL.
+```c
+struct Node *insert_at_beg(struct Node *start)
+{
+	struct Node *New;
+	New=create();
+	printf("\nEnter the data in New Node");
+	scanf("%d",&New->info);
+	if(start==NULL)
+	start=New;
+	else
+	{
+		New->next=start;
+		start->prev=New;
+		start=New;
+	}
+	return start;
+}
+```
